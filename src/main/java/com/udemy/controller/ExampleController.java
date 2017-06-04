@@ -1,8 +1,11 @@
 package com.udemy.controller;
 
+import com.udemy.component.ExampleComponent;
 import com.udemy.model.Person;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +20,14 @@ public class ExampleController {
     public static final String EXAMPLE_OBJETO_VIEW = "exampleObjeto";
     public static final String EXAMPLE_LISTA_OBJETO_VIEW = "exampleListaObjeto";
 
+    @Autowired
+    @Qualifier("exampleComponent")
+    private ExampleComponent exampleComponent;
+    
     //Primera forma con datos simples
     @GetMapping("/exampleSimpleString")
     public String exampleSimpleString(Model model) {
+        exampleComponent.sayHello();
         model.addAttribute("name", "Jon");
         return EXAMPLE_SIMPLE_VIEW;
     }
