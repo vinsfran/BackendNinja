@@ -2,8 +2,7 @@ package com.udemy.controller;
 
 import com.udemy.component.ExampleComponent;
 import com.udemy.model.Person;
-import java.util.ArrayList;
-import java.util.List;
+import com.udemy.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,10 @@ public class ExampleController {
     public static final String EXAMPLE_OBJETO_VIEW = "exampleObjeto";
     public static final String EXAMPLE_LISTA_OBJETO_VIEW = "exampleListaObjeto";
 
+    @Autowired
+    @Qualifier("exampleService")
+    private ExampleService exampleService;
+    
     @Autowired
     @Qualifier("exampleComponent")
     private ExampleComponent exampleComponent;
@@ -58,7 +61,7 @@ public class ExampleController {
     //Primera forma con lista de objetos
     @GetMapping("/exampleListaObjetoString")
     public String exampleListaObjetoString(Model model) {
-        model.addAttribute("people", getPeople());
+        model.addAttribute("people", exampleService.getPeople());
         return EXAMPLE_LISTA_OBJETO_VIEW;
     }
 
@@ -66,16 +69,8 @@ public class ExampleController {
     @GetMapping("/exampleListaObjetoMAV")
     public ModelAndView exampleListaObjetoMAV() {
         ModelAndView mav = new ModelAndView(EXAMPLE_LISTA_OBJETO_VIEW);
-        mav.addObject("people", getPeople());
+        mav.addObject("people", exampleService.getPeople());
         return mav;
     }
 
-    private List<Person> getPeople() {
-        List<Person> people = new ArrayList<>();
-        people.add(new Person("Jon", 23));
-        people.add(new Person("Mikel", 30));
-        people.add(new Person("Eva", 43));
-        people.add(new Person("Peter", 18));
-        return people;
-    }
 }
