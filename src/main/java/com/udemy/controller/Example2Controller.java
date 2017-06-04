@@ -15,7 +15,7 @@ public class Example2Controller {
 
     //Primera forma--> localhost:8080/example2/request1?nm=JON
     //                 localhost:8080/example2/request1?nm=MIKEL
-    @GetMapping(value = "/request1")
+    @GetMapping("/request1")
     public ModelAndView request1(@RequestParam(name = "nm", required = false, defaultValue = "NULL") String name) {
         ModelAndView mav = new ModelAndView(EXAMPLE2_VIEW);
         mav.addObject("nm_in_model", name);
@@ -24,7 +24,7 @@ public class Example2Controller {
 
     //Segunda forma--> localhost:8080/example2/request2/JON
     //                 localhost:8080/example2/request2/MIKEL
-    @GetMapping(value = "/request2/{nm}")
+    @GetMapping("/request2/{nm}")
     public ModelAndView request2(@PathVariable("nm") String name) {
         ModelAndView mav = new ModelAndView(EXAMPLE2_VIEW);
         mav.addObject("nm_in_model", name);
