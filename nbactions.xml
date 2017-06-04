@@ -13,6 +13,7 @@
             <run.mainClass>com.udemy.BackendninjaApplication</run.mainClass>
             <Env.SPRING_OUTPUT_ANSI_ENABLED>always</Env.SPRING_OUTPUT_ANSI_ENABLED>
             
+            
         </properties>
     </action>
     <action>
@@ -28,6 +29,7 @@
             <run.mainClass>com.udemy.BackendninjaApplication</run.mainClass>
             <Env.SPRING_OUTPUT_ANSI_ENABLED>always</Env.SPRING_OUTPUT_ANSI_ENABLED>
             <jpda.listen>true</jpda.listen>
+            
             
         </properties>
     </action>
