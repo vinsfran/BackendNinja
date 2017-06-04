@@ -22,16 +22,16 @@ public class Example3Controller {
 //    public String redirect(){
 //        return "redirect:/example3/showform";
 //    }
-    
     //Segunda forma de redireccion
     @GetMapping("/")
-    public RedirectView redirect(){
+    public RedirectView redirect() {
         return new RedirectView("/example3/showform");
     }
-    
+
     @GetMapping("/showform")
     public String showform(Model model) {
         model.addAttribute("person", new Person());
+        int i = 6 / 0;
         return FORM_VIEW;
     }
 
@@ -41,5 +41,5 @@ public class Example3Controller {
         mav.addObject("person", person);
         return mav;
     }
-        
+
 }

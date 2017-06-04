@@ -18,14 +18,14 @@ public class ExampleController {
     public static final String EXAMPLE_LISTA_OBJETO_VIEW = "exampleListaObjeto";
 
     //Primera forma con datos simples
-    @GetMapping(value = "/exampleSimpleString")
+    @GetMapping("/exampleSimpleString")
     public String exampleSimpleString(Model model) {
         model.addAttribute("name", "Jon");
         return EXAMPLE_SIMPLE_VIEW;
     }
 
     //Segunda forma con datos simples
-    @GetMapping(value = "/exampleSimpleMAV")
+    @GetMapping("/exampleSimpleMAV")
     public ModelAndView exampleSimpleMAV() {
         ModelAndView mav = new ModelAndView(EXAMPLE_SIMPLE_VIEW);
         mav.addObject("name", "Mikel");
@@ -33,14 +33,14 @@ public class ExampleController {
     }
 
     //Primera forma con objetos
-    @GetMapping(value = "/exampleObjetoString")
+    @GetMapping("/exampleObjetoString")
     public String exampleObjetoString(Model model) {
         model.addAttribute("person", new Person("Jon", 23));
         return EXAMPLE_OBJETO_VIEW;
     }
 
     //Segunda forma con objetos
-    @GetMapping(value = "/exampleObjetoMAV")
+    @GetMapping("/exampleObjetoMAV")
     public ModelAndView exampleObjetoMAV() {
         ModelAndView mav = new ModelAndView(EXAMPLE_OBJETO_VIEW);
         mav.addObject("person", new Person("Mikel", 30));
@@ -48,14 +48,14 @@ public class ExampleController {
     }
     
     //Primera forma con lista de objetos
-    @GetMapping(value = "/exampleListaObjetoString")
+    @GetMapping("/exampleListaObjetoString")
     public String exampleListaObjetoString(Model model) {
         model.addAttribute("people", getPeople());
         return EXAMPLE_LISTA_OBJETO_VIEW;
     }
 
     //Segunda forma con lista de objetos
-    @GetMapping(value = "/exampleListaObjetoMAV")
+    @GetMapping("/exampleListaObjetoMAV")
     public ModelAndView exampleListaObjetoMAV() {
         ModelAndView mav = new ModelAndView(EXAMPLE_LISTA_OBJETO_VIEW);
         mav.addObject("people", getPeople());
