@@ -38,6 +38,13 @@ public class Course {
         this.hours = hours;
     }
 
+    public Course(String name, String description, int price, int hours) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.hours = hours;
+    }
+
     public int getId() {
         return id;
     }
