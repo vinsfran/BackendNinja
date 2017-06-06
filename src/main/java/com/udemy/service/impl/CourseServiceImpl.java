@@ -6,7 +6,9 @@ import com.udemy.service.CourseService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service("courseServiceImpl")
 public class CourseServiceImpl implements CourseService {
 
     @Autowired
