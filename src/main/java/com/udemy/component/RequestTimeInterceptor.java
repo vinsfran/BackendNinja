@@ -10,7 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 @Component("requestTimeInterceptor")
 public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
 
-    public static final Log LOGGER = LogFactory.getLog(RequestTimeInterceptor.class);
+    public static final Log LOG = LogFactory.getLog(RequestTimeInterceptor.class);
     
     //PRIMERO
     @Override
@@ -23,7 +23,7 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         long startTime = (long) request.getAttribute("startTime");
-        LOGGER.info("--REQUEST URL: '" + request.getRequestURL().toString() + "' -- TOTAL TIME: '" + (System.currentTimeMillis() - startTime) + "'ms");
+        LOG.info("Url to: '" + request.getRequestURL().toString() + "' in: '" + (System.currentTimeMillis() - startTime) + "ms'");
     }
 
 }
