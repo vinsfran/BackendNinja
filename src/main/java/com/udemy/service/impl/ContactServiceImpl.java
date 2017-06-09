@@ -5,6 +5,7 @@ import com.udemy.entity.Contact;
 import com.udemy.model.ContactModel;
 import com.udemy.repository.ContactRepository;
 import com.udemy.service.ContactService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class ContactServiceImpl implements ContactService {
     public ContactModel addContact(ContactModel contactModel) {
         Contact contact = contactRepository.save(contactConverter.convertContactModelToContact(contactModel));
         return contactConverter.convertContactToContactModel(contact);
+    }
+
+    @Override
+    public List<ContactModel> listAllContacts() {
+        return contactConverter.convertContactsToContactsModel(contactRepository.findAll());
     }
 
 }
