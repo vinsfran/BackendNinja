@@ -38,6 +38,11 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    public ContactModel findContactModelById(int id) {
+        return contactConverter.convertContactToContactModel(findContactById(id));
+    }
+
+    @Override
     public void removeContact(int id) {
         Contact contact = findContactById(id);
         if (contact != null) {

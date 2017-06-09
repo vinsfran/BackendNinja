@@ -1,6 +1,7 @@
 package com.udemy.controller;
 
 import com.udemy.constant.ViewConstant;
+import com.udemy.entity.Contact;
 import com.udemy.model.ContactModel;
 import com.udemy.service.ContactService;
 import org.apache.commons.logging.Log;
@@ -32,8 +33,13 @@ public class ContactController {
     }
 
     @GetMapping("/contactform")
-    public String redirectContactForm(Model model) {
-        model.addAttribute("contactModel", new ContactModel());
+    public String redirectContactForm(@RequestParam(name = "id", required = false) int id,
+            Model model) {
+        ContactModel contactModel = new ContactModel();
+        if (id != 0) {
+            contactModel = contactService.findContactModelById(id);
+        }
+        model.addAttribute("contactModel", contactModel);
         return ViewConstant.CONTACT_FORM;
     }
 
