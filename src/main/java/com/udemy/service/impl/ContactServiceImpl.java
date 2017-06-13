@@ -8,6 +8,7 @@ import com.udemy.service.ContactService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service("contactServiceImpl")
@@ -27,6 +28,7 @@ public class ContactServiceImpl implements ContactService {
         return contactConverter.convertContactToContactModel(contact);
     }
 
+//    @PreAuthorize("hasRole('ROLE_USER')")
     @Override
     public List<ContactModel> listAllContacts() {
         return contactConverter.convertContactsToContactsModel(contactRepository.findAll());

@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+//@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping("/contacts")
 public class ContactController {
 
@@ -31,6 +33,11 @@ public class ContactController {
         return "redirect:/contacts/showcontacts";
     }
 
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
+    // @PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
+    // @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    // @PreAuthorize("permitAll()")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/contactform")
     public String redirectContactForm(@RequestParam(name = "id", required = false) int id,
             Model model) {
