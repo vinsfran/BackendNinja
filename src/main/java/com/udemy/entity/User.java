@@ -75,8 +75,6 @@ public class User {
 
     public void setUserRole(Set<UserRole> userRole) {
         this.userRole = userRole;
-    }
-    
-    
+    }   
 
 }
