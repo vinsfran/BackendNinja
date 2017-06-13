@@ -20,12 +20,12 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
 
     @Autowired
-    @Qualifier
+    @Qualifier("userRepository")
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.udemy.entity.User user = userRepository.findByUserName(username);
+        com.udemy.entity.User user = userRepository.findByUsername(username);
         List<GrantedAuthority> authorities = buildAuthorities(user.getUserRole());
         return buildUser(user, authorities);
     }

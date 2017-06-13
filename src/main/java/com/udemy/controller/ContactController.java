@@ -1,7 +1,6 @@
 package com.udemy.controller;
 
 import com.udemy.constant.ViewConstant;
-import com.udemy.entity.Contact;
 import com.udemy.model.ContactModel;
 import com.udemy.service.ContactService;
 import org.apache.commons.logging.Log;
