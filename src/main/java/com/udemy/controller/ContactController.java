@@ -71,7 +71,7 @@ public class ContactController {
         ModelAndView mav = new ModelAndView(ViewConstant.CONTACTS);
         
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        mav.addObject("username", user.getUsername());
+        mav.addObject("username", user.getUsername() + " 1");
         mav.addObject("contacts", contactService.listAllContacts());
         return mav;
     }
