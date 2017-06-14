@@ -39,7 +39,12 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
         if (auth != null && auth.isAuthenticated()) {
             username = auth.getName();
         }
-        logRepository.save(new com.udemy.entity.Log(new Date(), auth.getDetails().toString(), username, url));
+        String details = "";
+        if (auth.getDetails() != null) {
+            details = auth.getDetails().toString();
+        }
+
+        logRepository.save(new com.udemy.entity.Log(new Date(), details, username, url));
         LOG.info("Url to: '" + url + "' in: '" + (System.currentTimeMillis() - startTime) + "ms'");
     }
 
