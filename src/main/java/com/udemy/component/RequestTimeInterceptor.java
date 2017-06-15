@@ -13,6 +13,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+/**
+ *
+ * @author vinsfran
+ */
 @Component("requestTimeInterceptor")
 public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
 
@@ -20,6 +24,9 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
     @Qualifier("logRepository")
     private LogRepository logRepository;
 
+    /**
+     *
+     */
     public static final Log LOG = LogFactory.getLog(RequestTimeInterceptor.class);
 
     //PRIMERO

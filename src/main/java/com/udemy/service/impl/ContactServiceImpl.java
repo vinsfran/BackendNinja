@@ -11,6 +11,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author vinsfran
+ */
 @Service("contactServiceImpl")
 public class ContactServiceImpl implements ContactService {
 
@@ -22,6 +26,11 @@ public class ContactServiceImpl implements ContactService {
     @Qualifier("contactConverter")
     private ContactConverter contactConverter;
 
+    /**
+     *
+     * @param contactModel
+     * @return
+     */
     @Override
     public ContactModel addContact(ContactModel contactModel) {
         Contact contact = contactRepository.save(contactConverter.convertContactModelToContact(contactModel));
@@ -29,21 +38,40 @@ public class ContactServiceImpl implements ContactService {
     }
 
 //    @PreAuthorize("hasRole('ROLE_USER')")
+
+    /**
+     *
+     * @return
+     */
     @Override
     public List<ContactModel> listAllContacts() {
         return contactConverter.convertContactsToContactsModel(contactRepository.findAll());
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Contact findContactById(int id) {
         return contactRepository.findById(id);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public ContactModel findContactModelById(int id) {
         return contactConverter.convertContactToContactModel(findContactById(id));
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void removeContact(int id) {
         Contact contact = findContactById(id);

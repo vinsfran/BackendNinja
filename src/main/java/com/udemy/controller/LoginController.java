@@ -8,11 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ *
+ * @author vinsfran
+ */
 @Controller
 public class LoginController {
 
+    /**
+     *
+     */
     public static final Log LOG = LogFactory.getLog(LoginController.class);
 
+    /**
+     *
+     * @param model
+     * @param error
+     * @param logout
+     * @return
+     */
     @GetMapping("/login")
     public String showLoginForm(Model model,
             @RequestParam(name = "error", required = false) String error,
@@ -24,6 +38,10 @@ public class LoginController {
         return ViewConstant.LOGIN;
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping({"/loginsuccess", "/"})
     public String loginCheck() {
         LOG.info("METHOD: loginCheck()");

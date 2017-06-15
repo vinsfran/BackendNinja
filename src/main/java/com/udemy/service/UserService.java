@@ -16,6 +16,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author vinsfran
+ */
 @Service("userService")
 public class UserService implements UserDetailsService {
 
@@ -23,6 +27,12 @@ public class UserService implements UserDetailsService {
     @Qualifier("userRepository")
     private UserRepository userRepository;
 
+    /**
+     *
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.udemy.entity.User user = userRepository.findByUsername(username);

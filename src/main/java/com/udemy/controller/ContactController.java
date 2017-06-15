@@ -20,17 +20,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ *
+ * @author vinsfran
+ */
 @Controller
 //@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping("/contacts")
 public class ContactController {
 
+    /**
+     *
+     */
     public static final Log LOG = LogFactory.getLog(ContactController.class);
 
     @Autowired
     @Qualifier("contactServiceImpl")
     private ContactService contactService;
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("/cancel")
     public String cancel() {
         return "redirect:/contacts/showcontacts";
@@ -40,6 +51,13 @@ public class ContactController {
     // @PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
     // @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     // @PreAuthorize("permitAll()")
+
+    /**
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/contactform")
     public String redirectContactForm(@RequestParam(name = "id", required = false) int id,
@@ -52,6 +70,12 @@ public class ContactController {
         return ViewConstant.CONTACT_FORM;
     }
 
+    /**
+     *
+     * @param contactModel
+     * @param model
+     * @return
+     */
     @PostMapping("/addcontact")
     public String addContact(@ModelAttribute(name = "contactModel") ContactModel contactModel,
             Model model) {
@@ -66,6 +90,10 @@ public class ContactController {
         return "redirect:/contacts/showcontacts";
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("/showcontacts")
     public ModelAndView showContacts() {
         ModelAndView mav = new ModelAndView(ViewConstant.CONTACTS);
@@ -76,6 +104,11 @@ public class ContactController {
         return mav;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/removecontact")
     public ModelAndView removeContact(@RequestParam(name = "id", required = true) int id) {
         contactService.removeContact(id);

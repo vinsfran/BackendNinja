@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author vinsfran
+ */
 @Entity
 @Table(name = "users")
 public class User {
@@ -26,6 +30,12 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<UserRole> userRole = new HashSet<UserRole>();
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param enabled
+     */
     public User(String username, String password, boolean enabled) {
         super();
         this.username = username;
@@ -33,6 +43,13 @@ public class User {
         this.enabled = enabled;
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param enabled
+     * @param userRole
+     */
     public User(String username, String password, boolean enabled, Set<UserRole> userRole) {
         super();
         this.username = username;
@@ -41,37 +58,72 @@ public class User {
         this.userRole = userRole;
     }
 
+    /**
+     *
+     */
     public User() {
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isEnabled() {
         return enabled;
     }
 
+    /**
+     *
+     * @param enabled
+     */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
+    /**
+     *
+     * @return
+     */
     public Set<UserRole> getUserRole() {
         return userRole;
     }
 
+    /**
+     *
+     * @param userRole
+     */
     public void setUserRole(Set<UserRole> userRole) {
         this.userRole = userRole;
     }   
