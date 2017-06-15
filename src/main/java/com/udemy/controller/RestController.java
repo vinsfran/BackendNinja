@@ -6,10 +6,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ *
+ * @author vinsfran
+ */
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/rest")
 public class RestController {
     
+    /**
+     *
+     * @return
+     */
     @GetMapping("checkrest")
     public ResponseEntity<ContactModel> checkRest(){
         ContactModel cm = new ContactModel(2, "Mikel", "Perez", "321213", "Asu");
